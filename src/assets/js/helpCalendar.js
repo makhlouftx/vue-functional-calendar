@@ -24,7 +24,14 @@ export default class helpCalendar {
     let day = date.getDate()
     let month = date.getMonth() + 1
     let year = date.getFullYear()
+    let wd=date.getDay()
 
+    let wds=['Sun', 'Mon', 'Tue','Wed','Thu','Fri','Sat'][wd]
+    let mo='Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')
+    let mos=mo[month]
+
+    return wds+' '+day.toString()+' '+mos+' '+year.toString()
+    
     let formattedDate = this.dateFormat.replace('dd', day.toString())
     formattedDate = formattedDate.replace('mm', month.toString())
     formattedDate = formattedDate.replace('yyyy', year.toString())
@@ -32,6 +39,7 @@ export default class helpCalendar {
   }
 
   getDateFromFormat(date) {
+    return new Date(date)
     let format = this.dateFormat.split(' ')[0]
     date = date.split(' ')[0]
     if (format.indexOf('/') !== -1) {
